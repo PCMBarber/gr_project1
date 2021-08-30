@@ -1,10 +1,12 @@
 # gr_project1
 Game Review Project 
 
-In this project, i will set up a database that will hold two tables, one for Games, and the other for Reviews. 
+In this project, i will set up a database that will hold three tables, one for Games, one for user ID and the other for Reviews. 
 
 In the games table, it will hold a unique id for the game added, then brief information about the game:
 ID, name, genre, release date and age rating
+
+In the user ID, it will have : ID and User Name
 
 In the Review table, there will be an id for the input of review, a space to create a review on the game:
 ID, ID tied to game ID, name, personal rating 1/10, pros' and cons'.
