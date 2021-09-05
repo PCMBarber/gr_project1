@@ -10,20 +10,20 @@ The user should be able to navigate easily through the application, having a sea
 I will also have all the documentation that has been part of the design process, coding and AGILE methodoligies.<br>
 This will include:</p>
         <ul>
-            -A trello board to keep track of progress and goals
-            -A risk assessment to document all the potential threats and issues my project may encounter
-            -An ERD and chen diagram to display the functionality and relationships between my database
-            -SQL relational database for incorporating the usability of my database
-            -Testing documentation, to prove the functionality of my code
-            -A functioning front end flask website
-            -A collection of all the files and folders in a GIT repository with no additional unnecessary files
+            -A trello board to keep track of progress and goals<br>
+            -A risk assessment to document all the potential threats and issues my project may encounter<br>
+            -An ERD and chen diagram to display the functionality and relationships between my database<br>
+            -SQL relational database for incorporating the usability of my database<br>
+            -Testing documentation, to prove the functionality of my code<br>
+            -A functioning front end flask website<br>
+            -A collection of all the files and folders in a GIT repository with no additional unnecessary files<br>
         </ul>
 <p> will be also keeping any changes or updates in a log, to see how the project varied due to issues or compatability with the project criteria. </p>
 
 __________________________________________________________________________________________________________________________
 
 
-<h1>Design Ideas</h1><br><br>
+<h1>Design Ideas</h1><br>
 
 <p>In this project, i will set up a database that will hold three tables, one for Games, one for user ID and the other for Reviews.<br><br>
 
