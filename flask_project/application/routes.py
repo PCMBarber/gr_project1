@@ -5,7 +5,7 @@ from application.forms import TodoForm, OrderTodo   #the name of my forms
 
 @app.route('/')
 
-@app.route('/games', methods=['GET', 'POST'])
+@app.route('/games', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def games():
     if request.method == 'POST':
         return 'Add a game here'

@@ -2,9 +2,10 @@ from application import db
 
 
 #this is my models/schema for the project
-class Todos(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+# class Users(db.Users):
+#     id = db.Column(db.Integer, primary_key=True)
 
-    task = db.Column(db.String(30), unique=True)
+#     Nickname = db.Column(db.String(40)), unique=True)
 
-    complete = db.Column(db.Boolean, default=False)
+# class Games(db.Games):
+    
