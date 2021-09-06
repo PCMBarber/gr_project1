@@ -1,13 +1,16 @@
-from flask import Flask
+from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
-from os import getenv
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, BooleanField, SelectField
+from wtforms.validators import DataRequired
+import os
 
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///app.py"
-app.config['SECRET_KEY'] = "secret-key"
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 db = SQLAlchemy(app)
 
 
-from application import routes
+from application import forms, routes, models
