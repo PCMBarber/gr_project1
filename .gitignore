@@ -1,5 +1,6 @@
 **/__pycache__
-/venv/
-/vscode/
-/.coverage/
+**/venv/
+**/vscode/
+**/.coverage/
 **/.pyc
+**/app.db
