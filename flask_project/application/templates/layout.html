@@ -3,8 +3,30 @@
     <head>
         <h1>Games List</h1>
     </head>
-        <body>
-            {% block body %}
-            {% endblock body %}
-        </body>
+    <body>
+        {% block body %}
+        <body> 
+            <h2> Insert your game here</h2>
+                    <p>
+                        <div class='form'>
+                            <form method='POST' action=''>
+                                <fieldset>
+                                    {{ form.hidden_tag() }}
+                                    {{ form.title.label }} {{ form.title }}
+                                    <br>
+                                    {{ form.genre.label }} {{ form.genre }}
+                                    <br>
+                                    {{ form.rating.label }} {{ form.rating }}
+                                    <br>
+                                    {{ form.devs.label }} {{ form.devs }}
+                                    <br>
+                                    {{ form.submit }}
+                                </fieldset>
+                            </form>
+                        </div>
+                    </p>
+                
+            </body>
+        {% endblock body %}
+    </body>
 </html>

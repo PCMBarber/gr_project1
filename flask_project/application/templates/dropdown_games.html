@@ -1,0 +1,15 @@
+{% extends "games.html" %}
+{% block content %}
+<!-- dropdown box -->
+<div>
+    
+    <form method="GET" action="">
+        <input list="Titles">
+        <datalist id="Games">
+        {% for game in games %}
+          <option value = {{ game.title }}>
+        {% end for %}
+        </datalist>
+      </form>
+</div>
+{% endblock content %}
