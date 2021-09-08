@@ -26,6 +26,7 @@ class Add_Mission_list(FlaskForm):
 
 
 
+
     # def validate_title(self, title):
     #     games = Games.query.all()
     #     if title == games.data:

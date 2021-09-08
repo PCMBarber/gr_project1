@@ -4,10 +4,10 @@ from .models import Games, Mission_List
 from .forms import Add_GamesForm, Add_Mission_list
 from datetime import date
 
-@app.route('/')
-def home():
-    return render_template('layout.html')
 
+# def home():
+#     return render_template('layout.html')
+@app.route('/')
 @app.route('/add_game', methods=['GET', 'POST'])
 def add():
     form = Add_GamesForm()
@@ -17,8 +17,9 @@ def add():
         new_rating = form.rating.data
         new_devs = form.devs.data
         game = Games(title=new_title, genre=new_genre, rating=new_rating, devs=new_devs)
-    db.session.add(game)
-    db.session.commit()
+        db.session.add(game)
+        db.session.commit()
+        return redirect(url_for('read'))
     return render_template('layout.html', form = form)
 
 @app.route('/read_games')
@@ -33,4 +34,31 @@ def add_mission(gameid):
         new_mission_text = form.mission_text.data
         new_date = date.today()
         mission = Mission_List(game_id=gameid, mission_text=new_mission_text, checklist=False, date=new_date)
-    return render_template('mission_list.html', form = form)
+        db.session.add(mission)
+        db.session.commit()
+    games = Games.query.filterby(game_id=gameid)
+    return render_template('mission_list.html', form = form, games = games)
+
+@app.route('/display_game/<int:gameid>')
+def display_game(gameid):
+    games = Games.query.filterby(game_id=gameid)
+    mission = Mission_List.query.filterby(game_id=gameid)
+    return render_template('mission_list.html', games=games, mission=mission)
+
+@app.route('/complete/<int:gameid>')
+def complete(gameid):
+    mission = Mission_List.query.get(gameid)
+    mission.checklist = True
+    db.session.commit()
+    return redirect(url_for('display_game', gameid = gameid))
+
+@app.route('/incomplete/<int:gameid>')
+def incomplete(gameid):
+    mission = Mission_List.query.get(gameid)
+    mission.checklist = False
+    db.session.commit()
+    return redirect(url_for('display_game', gameid = gameid))
+
+# @app.route('/update_mission')
+# #update and delete routes
+# @app.route('/delete_mission')
