@@ -23,7 +23,7 @@ class Add_Mission_list(FlaskForm):
     mission_text = StringField('Enter your mission here!',
         validators = [DataRequired(), Length(min=2, max=200)])
     date = DateField()
-
+    submit = SubmitField ('Submit')
 
 
 

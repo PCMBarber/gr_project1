@@ -5,8 +5,6 @@ from .forms import Add_GamesForm, Add_Mission_list
 from datetime import date
 
 
-# def home():
-#     return render_template('layout.html')
 @app.route('/')
 @app.route('/add_game', methods=['GET', 'POST'])
 def add():
@@ -59,6 +57,22 @@ def incomplete(gameid):
     db.session.commit()
     return redirect(url_for('display_game', gameid = gameid))
 
-# @app.route('/update_mission')
-# #update and delete routes
-# @app.route('/delete_mission')
+@app.route('/update_mission/<int:gameid>', methods= ['GET','POST'])
+def update_mission(gameid):
+    games = Mission_List.query.get(gameid)
+    form = Add_Mission_list()
+    if form.validate_on_submit():
+        games.mission_text = form.mission_text.data
+        db.session.commit()
+        redirect(url_for('mission_list.html'))
+    elif request.method == 'GET':
+        form.mission_text.data = games.mission_text
+    return render_template('mission_list.html', form=form, games=games)
+
+@app.route('/delete/<int:id>')
+def mission_delete(id):
+    mission_text = Mission_List.query.get(id)
+    db.session.delete(mission_text)
+    db.session.commit()
+    return redirect(url_for('mission_list.html', mission_text=mission_text))
+
