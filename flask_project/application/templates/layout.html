@@ -1,32 +1,13 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <h1>Games List</h1>
-    </head>
-    <body>
-        {% block body %}
-        <body> 
-            <h2> Insert your game here</h2>
-                    <p>
-                        <div class='form'>
-                            <form method='POST' action=''>
-                                <fieldset>
-                                    {{ form.hidden_tag() }}
-                                    {{ form.title.label }} {{ form.title }}
-                                    <br>
-                                    {{ form.genre.label }} {{ form.genre }}
-                                    <br>
-                                    {{ form.rating.label }} {{ form.rating }}
-                                    <br>
-                                    {{ form.devs.label }} {{ form.devs }}
-                                    <br>
-                                    {{ form.submit }}
-                                </fieldset>
-                            </form>
-                        </div>
-                    </p>
-                
-            </body>
-        {% endblock body %}
-    </body>    
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<h1 style="background-color: rgb(215, 179, 119);" style="color:rgb(219, 219, 219);">Welcome to the Game Mission Tracker!</h1>
+</head>
+<body style="background-color: rgb(43, 65, 98);">
+    <a href="{{ url_for('home') }}">Add a game to your list</a> || <a href="{{ url_for('add_quiz') }}">Select your Game</a> || <a href="{{ url_for('add_q') }}">Add a Mission</a>
+{% block body %} 
+{% endblock body %}  
 </html>

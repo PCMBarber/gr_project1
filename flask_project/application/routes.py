@@ -17,7 +17,7 @@ def add():
         game = Games(title=new_title, genre=new_genre, rating=new_rating, devs=new_devs)
         db.session.add(game)
         db.session.commit()
-        return redirect(url_for('read'))
+        return redirect(url_for('read_games'))
     return render_template('layout.html', form = form)
 
 @app.route('/read_games')
