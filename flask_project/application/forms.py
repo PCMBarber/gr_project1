@@ -32,6 +32,19 @@ class Add_Mission_list(FlaskForm):
     #     if title == games.data:
     #         raise ValidationError('This game exists already!')
 
+
+# class Add_GamesForm(FlaskForm):
+#     game = StringField('Add a game here',
+#         validators = [DataRequired(), Length(min=1, max=30)])
+#     submit = SubmitField('Games List')
+
+#     def validate_title(self, game):
+#         games = Games.query.all()
+#         for game in games:
+#             if game == game.data:
+#                 raise ValidationError('This game exists already!')
+
+
 # class OrderGames(FlaskForm):
 #     order_with = SelectField('Order With',
 #         choices=[

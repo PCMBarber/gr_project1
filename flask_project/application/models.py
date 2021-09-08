@@ -14,3 +14,4 @@ class Mission_List(db.Model):
     mission_text = db.Column(db.String(200))
     checklist = db.Column(db.Boolean, default=False)
     date = db.Column(db.DateTime)
+
