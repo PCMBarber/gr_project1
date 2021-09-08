@@ -1,25 +1,38 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, BooleanField, SubmitField, SelectField
-from wtforms.validators import DataRequired, ValidationError
+from wtforms.fields.core import DateField
+from wtforms.validators import DataRequired, Length
 
-from application.models import Todos
-# add all the classes in here
 
-# class TodoForm(FlaskForm):
-#     task = StringField('Task',
-#         validators = [
-#             DataRequired(),
-#         ]    
-#     )
-#     submit = SubmitField('Submit')
+class Read_GamesForm(FlaskForm):
+    title = SelectField('title')
 
-#     def validate_task(self, task):
-#         todos = Todos.query.all()
-#         for todo in todos:
-#             if todo.task == task.data:
-#                 raise ValidationError('You already added this Todo')
+class Add_GamesForm(FlaskForm):
+    title = StringField('Enter the Title of your game',
+        validators = [DataRequired(), Length(min=1, max=30)])
+    genre = StringField('Enter the Genre of your game',
+        validators = [DataRequired(), Length(min=1, max=30)])
+    rating = StringField('Enter the Age Rating',
+        validators = [DataRequired(), Length(min=1, max=30)])
+    devs = StringField('Enter the games Developer',
+        validators = [DataRequired(), Length(min=1, max=30)])
+    submit = SubmitField('Submit Game')
 
-# class OrderTodo(FlaskForm):
+class Add_Mission_list(FlaskForm):
+    checkbox = BooleanField()
+    mission_text = StringField('Enter your mission here!',
+        validators = [DataRequired(), Length(min=2, max=200)])
+    date = DateField()
+
+
+
+
+    # def validate_title(self, title):
+    #     games = Games.query.all()
+    #     if title == games.data:
+    #         raise ValidationError('This game exists already!')
+
+# class OrderGames(FlaskForm):
 #     order_with = SelectField('Order With',
 #         choices=[
 #             ("complete", "Completed"),
