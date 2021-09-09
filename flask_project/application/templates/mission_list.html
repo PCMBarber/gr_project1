@@ -1,10 +1,43 @@
 {% extends "dropdown_games.html" %}
 {% block body %}
+<head>
+    <link rel="stylesheet" href="Site.css">
+</head>
 <h2> Missions to do! </h2>
-<fieldset>
-    <div>  
-        <textarea name="message" rows="10" cols="30"></textarea>
+<body>
+    {% for game in games %}
+    <h4 style="text-align: center;">Title: {{ form.title }}</h4>
+    <hr>
+    <br>
+    <div class="staticText">
+        
+            <h4> Age ratings </h4>
+            <h4>{{ form.rating }}</h4>
+            <h4> Genre </h4>
+            <h4>{{ form.genre }}</h4>
+            <h4> Developers </h4>
+            <h4>{{ form.devs }}</h4>
+        {% endfor %}
     </div>
-</fieldset>
-
+    <hr>
+    <br>
+    <div class="form">
+        <form>
+            <label for="checkbox1"></label>
+            <input type="checkbox" id="checkbox1" name="checkbox1" value="Complete">
+            <br>
+            <label for="mission">Instructions</label>
+            <input type="text" id="text1" name="mission" class="form-control">
+            <br>
+            <label for="date1">Date Added: {{date}}</label>
+            <br>
+            <div class="row" style="margin-top: 15px;">
+                <button type="submit" formaction="url_for('add_mission')">Add New Mission</button>
+                <button type="submit" formaction="url_for('update_mission')">Update</button>
+                <button type="submit" formaction="url_for('mission_delete')">Delete</button>
+                <button type="submit" formaction="url_for('add_text')">Submit</button>
+        </form>
+    </div>
+    </div>
+</body>
 {% endblock body %}
