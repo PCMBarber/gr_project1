@@ -28,3 +28,4 @@ class Add_Mission_list(FlaskForm):
     #     games = Games.query.all()
     #     if title == games.data:
     #         raise ValidationError('This game exists already!')
+
