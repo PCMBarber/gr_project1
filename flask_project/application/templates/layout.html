@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<h1 style="background-color: rgb(215, 179, 119);" style="color:rgb(219, 219, 219);">Welcome to the Game Mission Tracker!</h1>
+<h1 style="background-color: rgb(109, 183, 212);" style="color:rgb(219, 219, 219);">Game Mission Tracker!</h1>
 </head>
-<body style="background-color: rgb(43, 65, 98);">
-    <a href="{{ url_for('home') }}">Add a game to your list</a> || <a href="{{ url_for('add_quiz') }}">Select your Game</a> || <a href="{{ url_for('add_q') }}">Add a Mission</a>
+<body style="background-color: rgb(79, 117, 175);">
+    <a style="background-color: rgb(79, 117, 175);" href="{{ url_for('add') }}">Add game</a> || <a style="background-color: rgb(79, 117, 175);" href="{{ url_for('read') }}">Select your Game</a> || <a style="background-color: rgb(79, 117, 175);" href="{{ url_for('display_game', gameid=games.id) }}">Create a mission</a>
 {% block body %} 
-{% endblock body %}  
+{% endblock %}  
 </html>

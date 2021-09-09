@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% for game in games %}
+<br>
+Title FOR LATER{{ game.title }} 
+<br><br>
+<p>Genre</p>{{ game.genre }}
+<br><br>
+{{ game.rating }}
+<br><br>
+{{ game.devs }}
+
+    <form action='{{ url_for("update_game", id=game.id) }}'>
+        <button type="submit">Display Games</button>
+    </form>
+    <form action='{{ url_for("game_delete", id=game.id) }}'>
+        <button type="submit">Delete Game</button>
+    </form>
+
+
+{% endfor %}
+{% endblock %}
