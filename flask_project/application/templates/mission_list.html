@@ -1,43 +1,57 @@
-{% extends "dropdown_games.html" %}
+{% extends "layout.html" %}
 {% block body %}
 <head>
     <link rel="stylesheet" href="Site.css">
 </head>
 <h2> Missions to do! </h2>
 <body>
-    {% for game in games %}
-    <h4 style="text-align: center;">Title: {{ form.title }}</h4>
     <hr>
+    <h4 style="text-align: center;">Title: {{ games.title }}</h4>
+    </hr>
     <br>
     <div class="staticText">
+        <hr>
+            <h4> Age ratings ||| {{ games.rating }}</h4>
+            
+        </hr><hr>
+            <h4> Genre ||| {{ games.genre }}</h4>
+            
+        </hr><hr>
+            <h4> Developers ||| {{ games.devs }}</h4>
+            
+        </hr>
+    </div>
+<hr>
+<br>
+    <div>
+        {% for mission in missions %}
+        <p>{{ mission.mission_text }} ||| {{ mission.date }} </p><br>
         
-            <h4> Age ratings </h4>
-            <h4>{{ form.rating }}</h4>
-            <h4> Genre </h4>
-            <h4>{{ form.genre }}</h4>
-            <h4> Developers </h4>
-            <h4>{{ form.devs }}</h4>
-        {% endfor %}
-    </div>
-    <hr>
-    <br>
-    <div class="form">
-        <form>
-            <label for="checkbox1"></label>
-            <input type="checkbox" id="checkbox1" name="checkbox1" value="Complete">
-            <br>
-            <label for="mission">Instructions</label>
-            <input type="text" id="text1" name="mission" class="form-control">
-            <br>
-            <label for="date1">Date Added: {{date}}</label>
-            <br>
-            <div class="row" style="margin-top: 15px;">
-                <button type="submit" formaction="url_for('add_mission')">Add New Mission</button>
-                <button type="submit" formaction="url_for('update_mission')">Update</button>
-                <button type="submit" formaction="url_for('mission_delete')">Delete</button>
-                <button type="submit" formaction="url_for('add_text')">Submit</button>
+
+        {% if mission.checklist == True %}
+        &#9989
+        <form action='{{ url_for("incomplete", id=mission.game_id) }}'>
+        <input type=submit value="Incomplete">
         </form>
-    </div>
-    </div>
+    {% else %}
+        <form action='{{ url_for("complete", id=mission.game_id) }}'>
+        <input type=submit value="Complete">
+        </form>
+    {% endif %}
+        <a href='{{ url_for("update_mission", id=mission.mission_id, game_id=mission.game_id) }}'>Update mission</a><br>
+        <a href='{{ url_for("mission_delete", id=mission.mission_id, game_id=mission.game_id) }}'>Delete mission</a><br>
+        {% endfor %}
+    </div><br>
+    <hr>
+        <a href='{{ url_for("add_text", id=games.id) }}'>Add mission text here!</a>
+
+    <form action='' method='POST'>
+        {{ form.hidden_tag() }}
+        {{ form.mission_text.label }} {{ form.mission_text }}<br>
+        {{ form.submit }}<br>
+    </form>
+    <hr>
+</div>
 </body>
 {% endblock body %}
+<label for="date1">Date Added: {{date}}</label>

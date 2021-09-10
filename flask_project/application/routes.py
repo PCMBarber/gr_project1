@@ -20,24 +20,29 @@ def add():
         return redirect(url_for('read'))
     return render_template('add_game.html', form = form)
 
-
 #This is the section where you read games from 
 @app.route('/read_games')
 def read():
     games = Games.query.all()
     return render_template('games_list.html', games = games)
 
-@app.route('/update_games/<int:gameid>', methods= ['GET','POST'])
-def update_game(gameid):
-    games = Mission_List.query.get(gameid)
-    form = Add_Mission_list()
+@app.route('/update_games/<int:id>', methods= ['GET','POST'])
+def update_game(id):
+    games = Games.query.get(id)
+    form = Add_GamesForm()
     if form.validate_on_submit():
-        games.game_text = form.game_text.data
+        games.title = form.title.data
+        games.genre = form.genre.data
+        games.rating = form.rating.data
+        games.devs = form.devs.data
         db.session.commit()
-        redirect(url_for('read'))
+        return redirect(url_for('read'))
     elif request.method == 'GET':
-        form.game_text.data = games.game_text
-    return render_template('read', form=form, games=games)
+        form.title.data = games.title
+        form.genre.data = games.genre
+        form.rating.data = games.rating
+        form.devs.data = games.devs
+    return render_template('update_games.html', form=form)
 
 @app.route('/delete/<int:id>')
 def game_delete(id):
@@ -48,63 +53,55 @@ def game_delete(id):
 
 #this is where you add your missions to the missions table
 
-@app.route('/mission_text/<int:gameid>', methods=['GET','POST'])
-def add_mission(gameid):
+@app.route('/display_games/<int:id>')
+def display_game(id):
     form = Add_Mission_list()
-    if request.method == 'POST':
-        new_mission_text = form.mission_text.data
-        new_date = date.today()
-        mission = Mission_List(game_id=gameid, mission_text=new_mission_text, checklist=False, date=new_date)
-        db.session.add(mission)
-        db.session.commit()
-    games = Games.query.filterby(game_id=gameid)
-    return render_template('mission_list.html', form = form, games = games)
+    games = Games.query.filter_by(id=id).first()
+    missions = Mission_List.query.filter_by(game_id=id).all()
+    return render_template('mission_list.html', games=games, missions=missions, form=form)
 
-@app.route('/display_games/<int:gameid>')
-def display_game(gameid):
-    games = Games.query.filterby(game_id=gameid)
-    mission = Mission_List.query.filterby(game_id=gameid)
-    return render_template('mission_list.html', games=games, mission=mission)
-
-@app.route('/complete/<int:gameid>')
-def complete(gameid):
-    mission = Mission_List.query.get(gameid)
+@app.route('/complete/<int:id>')
+def complete(id):
+    mission = Mission_List.query.get(id)
     mission.checklist = True
     db.session.commit()
-    return redirect(url_for('display_game', gameid = gameid))
+    return redirect(url_for('display_game', id = id))
 
-@app.route('/incomplete/<int:gameid>')
-def incomplete(gameid):
-    mission = Mission_List.query.get(gameid)
+@app.route('/incomplete/<int:id>')
+def incomplete(id):
+    mission = Mission_List.query.get(id)
     mission.checklist = False
     db.session.commit()
-    return redirect(url_for('display_game', gameid = gameid))
+    return redirect(url_for('display_game', id = id))
 
-@app.route('/submit_text/<int:gameid>', methods= ['GET', 'POST'])
-def add_text(gameid):
-    mission = Mission_List.query.get(gameid)
+@app.route('/submit_text/<int:id>', methods= ['GET', 'POST'])
+def add_text(id):
     form = Add_Mission_list()
-    mission_text = Mission_List(mission_text = form.mission_text.data)
-    db.session.add(mission_text)
-    db.session.commit()
-    return redirect('mission_list.html', form=form, mission=mission)
+    games = Games.query.filter_by(id=id).first()
+    missions = Mission_List.query.filter_by(game_id=id).all()
+    if request.method == 'POST':
+        mission_text = Mission_List(game_id = id, mission_text = form.mission_text.data, checklist = False, date = date.today())
+        db.session.add(mission_text)
+        db.session.commit()
+        return redirect(url_for('display_game', id=id))
+    return render_template('mission_list.html', games=games, missions=missions, form=form)
 
-@app.route('/update_mission/<int:gameid>', methods= ['GET','POST'])
-def update_mission(gameid):
-    games = Mission_List.query.get(gameid)
+@app.route('/update_mission/<int:id>/<int:game_id>', methods= ['GET','POST'])
+def update_mission(id, game_id):
+    game = Mission_List.query.get(id)
     form = Add_Mission_list()
     if form.validate_on_submit():
-        games.mission_text = form.mission_text.data
+        game.mission_text = form.mission_text.data
         db.session.commit()
-        redirect(url_for('mission_list.html'))
+        return redirect(url_for('display_game', id = game_id))
     elif request.method == 'GET':
-        form.mission_text.data = games.mission_text
-    return render_template('mission_list.html', form=form, games=games)
+        form.mission_text.data = game.mission_text
+    return render_template('update_mission.html', form=form)
 
-@app.route('/delete/<int:id>')
-def mission_delete(id):
+@app.route('/delete_mission/<int:id>/<int:game_id>')
+def mission_delete(id, game_id):
     mission_text = Mission_List.query.get(id)
     db.session.delete(mission_text)
     db.session.commit()
-    return redirect(url_for('mission_list.html', mission_text=mission_text))
+    return redirect(url_for('display_game', id=game_id))
 
