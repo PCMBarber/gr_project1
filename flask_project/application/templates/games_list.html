@@ -2,22 +2,13 @@
 
 {% block body %}
 {% for game in games %}
-<br>
-Title FOR LATER{{ game.title }} 
 <br><br>
-<p>Genre</p>{{ game.genre }}
-<br><br>
-{{ game.rating }}
-<br><br>
-{{ game.devs }}
-
-    <form action='{{ url_for("update_game", id=game.id) }}'>
-        <button type="submit">Display Games</button>
+<a href="{{ url_for('display_game', id=game.id) }}">{{ game.title }}</a><br>
+<hr>
+    <a href='{{ url_for("update_game", id=game.id) }}'>Update your game</a><br>
     </form>
-    <form action='{{ url_for("game_delete", id=game.id) }}'>
-        <button type="submit">Delete Game</button>
+    <a href='{{ url_for("game_delete", id=game.id) }}'>Delete your game</a>    
     </form>
-
-
+<hr>
 {% endfor %}
 {% endblock %}
