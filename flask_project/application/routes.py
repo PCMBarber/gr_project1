@@ -5,7 +5,7 @@ from .forms import Add_GamesForm, Add_Mission_list
 from datetime import date
 
 #this is the section you add your game to the game table
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/add_game', methods=['GET', 'POST'])
 def add():
     form = Add_GamesForm()
@@ -53,26 +53,26 @@ def game_delete(id):
 
 #this is where you add your missions to the missions table
 
-@app.route('/display_games/<int:id>')
+@app.route('/display_games/<int:id>', methods=['GET', 'POST'])
 def display_game(id):
     form = Add_Mission_list()
     games = Games.query.filter_by(id=id).first()
     missions = Mission_List.query.filter_by(game_id=id).all()
     return render_template('mission_list.html', games=games, missions=missions, form=form)
 
-@app.route('/complete/<int:id>')
-def complete(id):
-    mission = Mission_List.query.get(id)
-    mission.checklist = True
-    db.session.commit()
-    return redirect(url_for('display_game', id = id))
+# @app.route('/complete/<int:id>')
+# def complete(id):
+#     mission = Mission_List.query.get(id)
+#     mission.checklist = True
+#     db.session.commit()
+#     return redirect(url_for('display_game', id = id))
 
-@app.route('/incomplete/<int:id>')
-def incomplete(id):
-    mission = Mission_List.query.get(id)
-    mission.checklist = False
-    db.session.commit()
-    return redirect(url_for('display_game', id = id))
+# @app.route('/incomplete/<int:id>')
+# def incomplete(id):
+#     mission = Mission_List.query.get(id)
+#     mission.checklist = False
+#     db.session.commit()
+#     return redirect(url_for('display_game', id = id))
 
 @app.route('/submit_text/<int:id>', methods= ['GET', 'POST'])
 def add_text(id):

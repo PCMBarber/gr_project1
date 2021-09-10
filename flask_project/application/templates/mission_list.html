@@ -26,18 +26,6 @@
     <div>
         {% for mission in missions %}
         <p>{{ mission.mission_text }} ||| {{ mission.date }} </p><br>
-        
-
-        {% if mission.checklist == True %}
-        &#9989
-        <form action='{{ url_for("incomplete", id=mission.game_id) }}'>
-        <input type=submit value="Incomplete">
-        </form>
-    {% else %}
-        <form action='{{ url_for("complete", id=mission.game_id) }}'>
-        <input type=submit value="Complete">
-        </form>
-    {% endif %}
         <a href='{{ url_for("update_mission", id=mission.mission_id, game_id=mission.game_id) }}'>Update mission</a><br>
         <a href='{{ url_for("mission_delete", id=mission.mission_id, game_id=mission.game_id) }}'>Delete mission</a><br>
         {% endfor %}
