@@ -16,7 +16,7 @@ class Add_GamesForm(FlaskForm):
     submit = SubmitField('Add your game to create a mission!')
 
 class Add_Mission_list(FlaskForm):
-    checkbox = BooleanField()
+    #checkbox = BooleanField()
     mission_text = StringField('Enter your mission here!',
         validators = [DataRequired(), Length(min=2, max=200)])
     date = DateField()

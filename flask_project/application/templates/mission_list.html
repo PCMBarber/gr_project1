@@ -18,14 +18,13 @@
             
         </hr><hr>
             <h4> Developers ||| {{ games.devs }}</h4>
-            
-        </hr>
     </div>
-<hr>
 <br>
     <div>
+        
         {% for mission in missions %}
-        <p>{{ mission.mission_text }} ||| {{ mission.date }} </p><br>
+        <hr>
+        <p>{{ mission.mission_text }} ||| {{ mission.date }} </p>
         <a href='{{ url_for("update_mission", id=mission.mission_id, game_id=mission.game_id) }}'>Update mission</a><br>
         <a href='{{ url_for("mission_delete", id=mission.mission_id, game_id=mission.game_id) }}'>Delete mission</a><br>
         {% endfor %}
