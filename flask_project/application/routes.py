@@ -80,10 +80,10 @@ def add_text(id):
     games = Games.query.filter_by(id=id).first()
     missions = Mission_List.query.filter_by(game_id=id).all()
     if request.method == 'POST':
-        mission_text = Mission_List(game_id = id, mission_text = form.mission_text.data, checklist = False, date = date.today())
+        mission_text = Mission_List(game_id = id, mission_text = form.mission_text.data, date = date.today())
         db.session.add(mission_text)
         db.session.commit()
-        return redirect(url_for('display_game', id=id))
+        return redirect(url_for('add_text', id=id))
     return render_template('mission_list.html', games=games, missions=missions, form=form)
 
 @app.route('/update_mission/<int:id>/<int:game_id>', methods= ['GET','POST'])
