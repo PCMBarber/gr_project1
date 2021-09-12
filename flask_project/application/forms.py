@@ -22,10 +22,3 @@ class Add_Mission_list(FlaskForm):
     date = DateField()
     submit = SubmitField ('Submit')
 
-
-
-    # def validate_title(self, title):
-    #     games = Games.query.all()
-    #     if title == games.data:
-    #         raise ValidationError('This game exists already!')
-
