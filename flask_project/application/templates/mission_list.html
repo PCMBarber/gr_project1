@@ -1,44 +1,37 @@
 {% extends "layout.html" %}
 {% block body %}
+<hr><br>
 <head>
     <link rel="stylesheet" href="Site.css">
 </head>
+<fieldset style="background: rgb(90, 165, 179);">
 <h2> Missions to do! </h2>
-<body>
+</fieldset><br>
+<fieldset style="background: rgb(90, 165, 179);">
+    <h2 style="text-align: center; font-size: x-large;">Title: {{ games.title }}</h2>
     <hr>
-    <h4 style="text-align: center;">Title: {{ games.title }}</h4>
-    </hr>
-    <br>
     <div class="staticText">
-        <hr>
-            <h4> Age ratings ||| {{ games.rating }}</h4>
-            
-        </hr><hr>
-            <h4> Genre ||| {{ games.genre }}</h4>
-            
-        </hr><hr>
-            <h4> Developers ||| {{ games.devs }}</h4>
-    </div>
-<br>
-    <div>
+            <h4 style="font-size: large;"> Age ratings ||| {{ games.rating }}</h4>
         
+            <h4 style="font-size: large;"> Genre ||| {{ games.genre }}</h4>
+        
+            <h4 style="font-size: large;"> Developers ||| {{ games.devs }}</h4>
+    </div>
+</fieldset><br>
+<fieldset style="font-size: large; background: rgb(90, 165, 179);">   
+    <br><div>
         {% for mission in missions %}
-        <hr>
         <p>{{ mission.mission_text }} ||| {{ mission.date }} </p>
         <a href='{{ url_for("update_mission", id=mission.mission_id, game_id=mission.game_id) }}'>Update mission</a><br>
         <a href='{{ url_for("mission_delete", id=mission.mission_id, game_id=mission.game_id) }}'>Delete mission</a><br>
         {% endfor %}
-    </div><br>
-    <hr>
-        
-
-    <form action='' method='POST'>
+    </div><br><hr>
+</fieldset><hr>    
+<fieldset style="background: rgb(90, 165, 179);">      
+    <form style="font-size: x-large;" action='' method='POST'>
         {{ form.hidden_tag() }}
         {{ form.mission_text.label }} {{ form.mission_text }}<br>
         {{ form.submit }}<br>
-    </form>
-    <hr>
-</div>
-</body>
+    </form><hr>
+</fieldset>
 {% endblock body %}
-<label for="date1">Date Added: {{date}}</label>

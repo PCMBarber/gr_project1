@@ -2,13 +2,16 @@
 
 {% block body %}
 {% for game in games %}
-<br><br>
-<a href="{{ url_for('add_text', id=game.id) }}">{{ game.title }}</a><br>
+<hr>
+<fieldset style="background: rgb(90, 165, 179);">
+<p>
+<a style="font-size: x-large;" href="{{ url_for('add_text', id=game.id) }}">{{ game.title }}</a><br>
 <hr>
     <a href='{{ url_for("update_game", id=game.id) }}'>Update your game</a><br>
     
     <a href='{{ url_for("game_delete", id=game.id) }}'>Delete your game</a>    
+</p>
+</fieldset>
 
-<hr>
 {% endfor %}
 {% endblock %}

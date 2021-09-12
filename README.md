@@ -55,7 +55,7 @@ ________________________________________________________________________________
             The first table Games contains game_id, title, genre, rating, developers.<br>
             The second table Mission_List contains id, game_id, mission_text, checklist and date.<br>
 
-This will give the option to add a new game with the details to a dropdown list, and from there the user will be able to select the game, find the details about the game, and then a place to input the mission text.</p>
+This will give the option to add a new game with the details to a dropdown/list, and from there the user will be able to select the game, find the details about the game, and then a place to input the mission text.</p>
 
 <p>The CRUD part of this project will be mainly in the mission text area, where the user will be able to CREATE, READ, UPDATE, DELETE information in and out of this area.</p>
 
