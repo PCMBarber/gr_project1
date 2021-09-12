@@ -52,7 +52,7 @@ class TestAddGame(TestBase):
 #lines 58-61
 class TestViewMission(TestBase):
     def test_view_mission(self):
-        response = self.client.get(url_for('display_game', id=1), )
+        response = self.client.get(url_for('add_text', id=1), )
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Crash Bandicoot', response.data)
 #lines 79-86
@@ -70,6 +70,12 @@ class TestViewMission(TestBase):
         response = self.client.get(url_for('update_mission', id=1, game_id=1))
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Test text', response.data)
+
+class TestUpdateMission(TestBase):
+    def test_view_game_mission(self):
+        response = self.client.get(url_for('display_game', id=1))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Crash Bandicoot', response.data)
 
 class TestMissionUpdate(TestBase):
     def test_update_mission(self):
@@ -91,7 +97,7 @@ class TestUpdateGame(TestBase):
     def test_view_update(self):
         response = self.client.get(url_for('update_game', id=1))
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Crash Bandicoot', 'Adventure', 'PG',  'Naughty Dog', response.data)
+        self.assertIn(b'Crash Bandicoot', response.data)
 
 class TestUpdateGame(TestBase):
     def test_update_game(self):
@@ -109,3 +115,4 @@ class TestDeleteGame(TestBase):
         )
         self.assertNotIn(b'Crash Bandicoot', response.data)
 
+#pytest --cov-report term-missing --cov=application test/
