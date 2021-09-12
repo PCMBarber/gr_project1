@@ -4,3 +4,4 @@
 **/.coverage/
 **/.pyc
 **/app.db
+**/.pytest_cache/
