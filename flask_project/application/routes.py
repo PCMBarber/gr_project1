@@ -93,7 +93,7 @@ def update_mission(id, game_id):
     if form.validate_on_submit():
         game.mission_text = form.mission_text.data
         db.session.commit()
-        return redirect(url_for('display_game', id = game_id))
+        return redirect(url_for('submit_text', id = game_id))
     elif request.method == 'GET':
         form.mission_text.data = game.mission_text
     return render_template('update_mission.html', form=form)
@@ -103,5 +103,5 @@ def mission_delete(id, game_id):
     mission_text = Mission_List.query.get(id)
     db.session.delete(mission_text)
     db.session.commit()
-    return redirect(url_for('display_game', id=game_id))
+    return redirect(url_for('add_text', id=game_id))
 
