@@ -57,7 +57,8 @@ class Test_Empty_Fields(TestBase):
         self.assertEqual(len(entries), 0)
 
 class Test_Click(TestBase):
-    def submit_input(self, games):
+    def submit_input(self):
+        games = "test"
         self.driver.find_element_by_xpath('//*[@id="title"]').send_keys(games)
         self.driver.find_element_by_xpath('//*[@id="genre"]').send_keys(games)
         self.driver.find_element_by_xpath('//*[@id="rating"]').send_keys(games)
