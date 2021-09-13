@@ -98,7 +98,7 @@ My Trello board for the project containing what the epic and viable MVP consiste
 
 The project was primarily managed through the use of GitHub, a online public cloud service for storing and collecting data and files. This was used as a way to keep iterations of my project at different stages broken off into featurebranch for daily input, dev as a stage before deployment, and main as my final staging at the end of the project.
 
-[Github](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/Git1.PNG)
+![Github](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/Git1.PNG)
 
 __________________________________________________________________________________________________________________________
 
@@ -108,12 +108,12 @@ Testing the project at intervals had changed the overall design and functionalit
 
 For the purpose of hitting MVP removing elements that where more tricky and would have put the project behind schedule. One of these issues being the use of a dropdown box with read functionality that also acted as a hyperlink.
 
-[dropdown]()
+![dropdown](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/list1.PNG)
 
 Also the use of a checkbox in the missions html to confirm that an action had been done. This presented issues by breaking the first line of the {% for %} statement, and would show only above everything else. This was an addition feature placed in the backlog and would have only been revisited as a Could Have.
 
-[checkb1]()
-[checkb2]()
+![checkb1](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/checkbox1.PNG)
+![checkb2](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/checkbox2.PNG)
 
 ---
 
@@ -122,27 +122,32 @@ Also the use of a checkbox in the missions html to confirm that an action had be
 Using Flask as a format for a html builder, using a sql-type database layout with the fields necessary to use the methods of CRUD within the app. Using the models as a schema for the database, the forms as a method of calling the information within the model, routes for implementing python methodologies and locations for your forms, and templates as the front end section of your html format app.
 
 My home page covers the creating and read methods for adding a Game to the first model table.
-[front end1]()
+![front end1](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/fr1.PNG)
 Second page lists the games in an order where you can select the game you would like to see more information on and add missions to, along with the ability to update and delete games from this list.
-[front end2]()
+![front end2](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/fr2.PNG)
 Third page is where the games information is displayed as static text, above an area where mission data is added to the third table, from here you can create update and delete missions.
-[front end3]()
+![front end3](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/fr3.PNG)
 This is the page for updating the games using both Get and Post
-[front end4]()
+![front end4](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/fr4.PNG)
 This is the page for updating missions, where it traces the id of the game and the mission.
-[front end5]()
+![front end5](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/fr5.PNG)
 
 ---
 
 # Unit and integration testing
 After the flask app has been completed, the next step is to check the use of each element within that app. Utilising Pytest-cov for Unit Testing, coverage of the code is tested with dummy information to see if the results will display on the receiving end. Selenium is used for integration testing via drivers as a click and type bot, simulating human interaction.
 
-[testing1]()
-[testing2]()
+With unit testing, i acheived an 92% total coverage on my unit tests and passed 9/9 for each route.
+![testing1](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/Coverage.PNG)
+
+Here are some of the tests covered by my attempt of integration testing
+![testing2](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/SeleniumTest.PNG)
 
 ---
 
 # CI Pipeline
+With the use of Jenkins, the project could utilise a continuous integration pipeline, assisting with transferring data directly to the standalone after development via use of GitHub and Webhook. The use of 2 instances within jenkins, one for the stand-alone web app, with the application of systemd files to complete the build, along with gunicorn. And the other instance for testing purposes with both unit and integration testing. 
+![jenkins](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/pipeline.PNG)
 
 ---
 
@@ -151,11 +156,14 @@ After the flask app has been completed, the next step is to check the use of eac
 Throughout this project there have been peaks and troughs of times where i have struggled, and those that have come easier. But overall, this has been a great learning experience, teaching the methods in a mock real-world job. I have understood alot more about coding as a whole, and am happy to see it reflect in the work i have produced. But not everything was convenient, and left me at a standstill with work for a long period of time.
 
 ### What went well
-The initial stages of this project, creating my documents and early flask files, models and forms seemed to pass by quite quickly. I would say even from some of the harder challenges, getting routes set up with full CRUD functionality and setting up the Jenkins VM with my app. I feel i have kept to a good time frame due to my 
+The initial stages of this project, creating my documents and early flask files, models and forms seemed to pass by quite quickly. I would say even from some of the harder challenges, getting routes set up with full CRUD functionality and setting up the Jenkins VM with my app have all been good high points in the project. I like the look of my front end, and feel proud of my acheivement. 
  
 ### What went badly or could have been better
+The route section of the Flask project was arguably one of the hardest sections in this project. Understanding python functionality in a code environment without being able to physically see results was difficult. I also would have liked to have jenkins running with a webhook. Avoiding merge issues and organising my GitHub better and labelling my branches in a clearer manner at less intervals.
+![conflict](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/Mergeconflict.PNG)
 
 ### How i can improve
+Ideally i would like to see improvements in the ability to read and visualise code, but as improvements to the project, my backlog of things i would have like to implement, a checkbox, a proffessional looking front end, and better time keeping for a more efficient and smooth transition through the project.
 
 
 
