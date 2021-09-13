@@ -96,17 +96,55 @@ My Trello board for the project containing what the epic and viable MVP consiste
 
 ## Version Control
 
+The project was primarily managed through the use of GitHub, a online public cloud service for storing and collecting data and files. This was used as a way to keep iterations of my project at different stages broken off into featurebranch for daily input, dev as a stage before deployment, and main as my final staging at the end of the project.
+
+[Github](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/Git1.PNG)
 
 __________________________________________________________________________________________________________________________
 
 # Test driven development
 
+Testing the project at intervals had changed the overall design and functionality within the project, primarily at the Flask and CRUD stages.
 
-__________________________________________________________________________________________________________________________
+For the purpose of hitting MVP removing elements that where more tricky and would have put the project behind schedule. One of these issues being the use of a dropdown box with read functionality that also acted as a hyperlink.
+
+[dropdown]()
+
+Also the use of a checkbox in the missions html to confirm that an action had been done. This presented issues by breaking the first line of the {% for %} statement, and would show only above everything else. This was an addition feature placed in the backlog and would have only been revisited as a Could Have.
+
+[checkb1]()
+[checkb2]()
+
+---
+
+# Front End FlaskApp
+
+Using Flask as a format for a html builder, using a sql-type database layout with the fields necessary to use the methods of CRUD within the app. Using the models as a schema for the database, the forms as a method of calling the information within the model, routes for implementing python methodologies and locations for your forms, and templates as the front end section of your html format app.
+
+My home page covers the creating and read methods for adding a Game to the first model table.
+[front end1]()
+Second page lists the games in an order where you can select the game you would like to see more information on and add missions to, along with the ability to update and delete games from this list.
+[front end2]()
+Third page is where the games information is displayed as static text, above an area where mission data is added to the third table, from here you can create update and delete missions.
+[front end3]()
+This is the page for updating the games using both Get and Post
+[front end4]()
+This is the page for updating missions, where it traces the id of the game and the mission.
+[front end5]()
+
+---
+
+# Unit and integration testing
+After the flask app has been completed, the next step is to check the use of each element within that app. Utilising Pytest-cov for Unit Testing, coverage of the code is tested with dummy information to see if the results will display on the receiving end. Selenium is used for integration testing via drivers as a click and type bot, simulating human interaction.
+
+[testing1]()
+[testing2]()
+
+---
 
 # CI Pipeline
 
-__________________________________________________________________________________________________________________________
+---
 
 # Reflections on the project
 
