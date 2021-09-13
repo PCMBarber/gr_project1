@@ -1,2 +1,9 @@
-venv/
-vscode/
+**/__pycache__
+**/venv/
+**/vscode/
+**/.coverage/
+**/.pyc
+**/app.db
+**/.pytest_cache/
+**/test.db
+/.coverage
