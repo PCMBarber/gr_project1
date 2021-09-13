@@ -6,6 +6,8 @@
 * [Design Ideas](#Design-Ideas)
 * [Design Documents](#Design-Documents)  
 * [Test driven development](#Test-driven-development)
+* [Front End FlaskApp](#Front-End-FlaskApp)
+* [Unit and Integration](#Unit-and-integration-testing)
 * [CI Pipeline](#CI-Pipeline)
 * [Reflections on the project](#Reflections-on-the-project)
 
@@ -100,7 +102,7 @@ The project was primarily managed through the use of GitHub, a online public clo
 
 ![Github](https://github.com/Arcticleech/gr_project1/blob/dev/rmimages/Git1.PNG)
 
-__________________________________________________________________________________________________________________________
+---
 
 # Test driven development
 
@@ -164,8 +166,3 @@ The route section of the Flask project was arguably one of the hardest sections 
 
 ### How i can improve
 Ideally i would like to see improvements in the ability to read and visualise code, but as improvements to the project, my backlog of things i would have like to implement, a checkbox, a proffessional looking front end, and better time keeping for a more efficient and smooth transition through the project.
-
-
-
-
-
