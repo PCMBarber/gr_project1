@@ -7,4 +7,4 @@ SECRET_KEY=gdsfejhkbljkhgsdrelhjkbdgsrew
 export SECRET_KEY
 pip3 install -r requirements.txt
 python3 create.py
-gunicorn -d --workers=4 --bind=0.0.0.0:5000 app:app
+gunicorn -D --workers=4 --bind=0.0.0.0:5000 app:app
